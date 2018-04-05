@@ -1,11 +1,116 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>RentMark 2.0 Backend</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>RentMark 2.0 Backend</h1>
+    <p>This is the backend for RentMark 2.0 Front-End</a> </p>
+    <p>
+      The following endpoints are available.
+      All endpoints return the data as JSON.
+      Please note that some endpoints are only accessible after authorization/authentication
+    </p>
+
+    <h2>Users Endpoints:</h2>
+    <ul>
+      <li>
+        <strong>GET /api/v1/users</strong>
+         - returns all Users currently in the database
+      </li>
+      <li>
+        <strong>GET /api/v1/users/:id</strong>
+         - returns the User object with the specific :id you've passed or 404 if the food is not found
+      </li>
+      <li>
+        <strong>POST /api/v1/users</strong>
+        - allows creating a new User with parameters:
+        <br><strong>{ food: {first_name: "First Name", last_name: "Last Name", email: "Email", password: "Password", unit_id: "Unit Id" } }</strong>
+        <br>If User is successfully created, the User object will be returned.
+        If the User is not successfully created, a 400 status code will be returned.
+        All fields are required to successfully post.
+      </li>
+      <li>
+        <strong>PATCH /api/v1/user/:id</strong>
+         - allows update of an existing User with parameters:
+        <br><strong>{ food: {first_name: "First Name", last_name: "Last Name", email: "Email", password: "Password", unit_id: "Unit Id" } }</strong>
+        <br>If User is successfully updated, the User object will be returned.
+        If the user is not successfully updated, a 400 status code will be returned.
+        All fields are required to successfully post.
+      </li>
+      <li>
+        <strong>DELETE /api/v1/user/:id</strong>
+         - will delete User with the id passed in. If the User can't be found. a 404 is returned
+      </li>
+    </ul>
+
+    <h2>Unit Endpoints:</h2>
+    <ul>
+      <li>
+        <strong>GET /api/v1/units</strong>
+         - returns all the units in the database along with their associated tenants(users)
+      </li>
+      <li>
+        <strong>GET /api/v1/units/:unit_id</strong>
+         - returns the Unit with :unit_id and all tenants(users) associated with it.
+         Returns 404 if the Unit is not found
+      </li>
+      <li>
+        <strong>POST /api/v1/units</strong>
+         - creates Unit with parameters:
+         <br><strong>{ unit: {unit_number: "Unit Number", unit_type: "unit_type", rent: "rent", rent_due: "rent_due", rent_due_date: "RentDueDate" } }</strong>
+         <br>If Unit is successfully created, the Unit object will be returned.
+         If the Unit is not successfully created, a 400 status code will be returned.
+         All fields are required to successfully post.
+      </li>
+      <li>
+        <strong>PATCH /api/v1/units/:unit_id</strong>
+         - allows update of an existing Unit with parameters:
+        <br><strong>{ unit: {unit_number: "Unit Number", unit_type: "unit_type", rent: "rent", rent_due: "rent_due", rent_due_date: "RentDueDate" } }</strong>
+        <br>If Unit is successfully updated, the Unit object will be returned.
+        If the Unit is not successfully updated, a 400 status code will be returned.
+        All fields are required to successfully patch.
+      </li>
+      <li>
+        <strong>DELETE /api/v1/units/:unit_id</strong>
+         - remove the unit associated with :unit_id:
+         <br> If the unit cannot be found, a 404 will be returned.
+      </li>
+    </ul>
+
+    <h2>Events Endpoints:</h2>
+    <ul>
+      <li>
+        <strong>GET /api/v1/events</strong>
+         - returns all the events in the database along
+      </li>
+      <li>
+        <strong>GET /api/v1/events/:event_id</strong>
+         - returns the event with :event_id and all tenants(users) associated with it.
+         Returns 404 if the event is not found
+      </li>
+      <li>
+        <strong>POST /api/v1/events</strong>
+         - adds a new Event with the following parameters:
+         <br><strong>{ event: {name: "name", details: "details", date: "date" } }</strong>
+         <br>If event is successfully posted, the event object will be returned.
+         If the event is not successfully posted, a 400 status code will be returned.
+         All fields are required to successfully post.
+      </li>
+      <li>
+        <strong>Patch /api/v1/events/:event_id</strong>
+         - updates an Event with the following parameters:
+         <br><strong>{ event: {name: "name", details: "details", date: "date" } }</strong>
+         <br>If event is successfully updated, the event object will be returned.
+         If the event is not successfully updated, a 400 status code will be returned.
+         All fields are required to successfully patch.
+      </li>
+      <li>
+        <strong>DELETE /api/v1/events/:event_id</strong>
+         - removes specific event by event_id:
+         <br>Returns 404 if event cannot be found by :event_id
+      </li>
+    </ul>
   </body>
 </html>
