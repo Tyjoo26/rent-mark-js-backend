@@ -13,8 +13,6 @@ class Event {
              events.event_name AS event_name,
              events.event_details AS event_details,
              events.event_date AS event_date,
-             event_users.total_available AS total_available,
-             event_users.current_total AS current_total,
              users.id AS user_id,
              users.first_name AS user_firstname,
              users.last_name AS user_lastname,
@@ -35,8 +33,6 @@ class Event {
             name: row.event_name,
             details: row.event_details,
             date: row.event_date,
-            total_available: row.total_available,
-            current_total: row.current_total,
             users: []}
         }
         let user = {
@@ -61,8 +57,6 @@ class Event {
            events.event_name AS event_name,
            events.event_details AS event_details,
            events.event_date as event_date,
-           event_users.total_available AS total_available,
-           event_users.current_total AS current_total,
            users.id AS user_id,
            users.first_name AS user_firstname,
            users.last_name AS user_lastname,
@@ -94,7 +88,7 @@ class Event {
       })
   }
   createEventUserAssociation(event_id, user_id) {
-    if (this.validateEventExists(event_id).then((result)= > result)
+    if (this.validateEventExists(event_id).then((result)=> result)
       && this.validateUserExists(user_id).then((result) => result)) {
         return database.raw(`INSERT INTO event_users(event_id, user_id) VALUES(?, ? )`, [event_id, user_id])
       } else {
@@ -115,7 +109,7 @@ class Event {
                          [params.event_name, params.event_details, params.event_date, id])
   }
   destroyUserFromEvent(event_id, user_id) {
-    if (this.validateEventExists(event_id).then((result)= > result)
+    if (this.validateEventExists(event_id).then((result)=> result)
       && this.validateUserExists(user_id).then((result) => result)) {
         return database.raw(`DELETE FROM event_users WHERE id IN (SELECT id FROm event_users WHERE event_users.event_id = ? AND event_users.user_id = ? LIMIT 1)`, [event_id, user_id])
       } else {
@@ -126,3 +120,5 @@ class Event {
     return database.raw(`DELETE FROM events WHERE id = ?`, event_id)
   }
 }
+
+module.exports = Event
