@@ -5,8 +5,8 @@ exports.up = function(knex, Promise) {
     t.increments("id").unsigned().notNullable();
     t.string("unit_type").notNullable();
     t.string("unit_number").notNullable()
-    t.bigInteger("rent").notNullable();
-    t.bigInteger("rent_due").notNullable();
+    t.decimal("rent", 6, 2).notNullable();
+    t.decimal("rent_due", 6, 2 ).notNullable();
     t.date("rent_due_date").notNullable();
   })
 };
