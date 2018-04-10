@@ -11,6 +11,20 @@ class UnitsController {
     unit.show(req.params.id)
       .then((data) => {res.send(data.rows)})
   }
+  updateUnitWithUsers(req, res) {
+    unit.createUnitUserAssociation(req.params.unit_id, req.params.user_id)
+      .then((data) => {
+        if (data === false) {
+          res.status(404).send()
+        } else {
+          res.send()
+        }
+      })
+  }
+  create(req, res) {
+    unit.createUnit(req.body.user)
+      .then((data) =>  {res.send(data.rows[0])})
+  }
 }
 
 

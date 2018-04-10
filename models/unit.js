@@ -17,6 +17,37 @@ class Unit {
                       INNER JOIN users ON users.id = unit_users.user_id
                       WHERE unit_id = ?`, id)
   }
+  validateUnitExists(unit_id) {
+    return database.raw(`SELECT * FROM units WHERE id = ?`, unit_id)
+      .then((data) => {
+        if (data.rowCount > 0 ) {
+          return true
+        } else {
+          return false
+        }
+      })
+  }
+  validateUserExists(user_id) {
+    return database.raw(`SELECT * FROM users where id = ?`, user_id)
+      .then((data) => {
+        if (data.rowCount > 0 ) {
+          return true
+        }  else {
+          return false
+        }
+      })
+  }
+  createUnitUserAssociation(unit_id, user_id) {
+    if (this.validateUnitExists(unit_id).then((result) => result) && (this.validateUserExists(user_id).then((result) => result))) {
+        return database.raw(`INSERT INTO unit_users(unit_id, user_id) VALUES (?, ?)`, [unit_id, user_id])
+      } else {
+        return false
+      }
+  }
+  createUnit(params) {
+    return database.raw(`INSERT INTO units(unit_type, unit_number, rent, rent_due, rent_due_date) VALUES (?, ? , ? , ? , ?)
+    RETURNING unit_type, unit_number, rent, rent_due, rent_due_date`, [params.unit_type, params.unit_number, params.rent, params.rent_due, params.rent_due_date])
+  }
 }
 
 
