@@ -5,8 +5,6 @@ exports.up = function(knex, Promise) {
     t.increments("id").notNullable();
     t.integer("event_id").notNullable().references('events.id');
     t.integer('user_id').notNullable().references('users.id');
-    t.integer("total_available").notNullable();
-    t.integer('current_total').notNullable();
   })
 };
 

@@ -127,7 +127,11 @@ class Event {
       }
   }
   destroyEvent(event_id) {
-    return database.raw(`DELETE FROM events WHERE id = ?`, event_id)
+    if (this.validateEventExists(event_id) === false) {
+      return false
+    } else {
+      return database.raw(`DELETE FROM events WHERE id = ?`, event_id)
+    }
   }
 }
 
