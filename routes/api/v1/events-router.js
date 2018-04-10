@@ -9,5 +9,7 @@ router.get('/', eventsController.index);
 
 router.get('/:event_id', eventsController.show);
 
+router.post('/', eventsController.createEvent);
+
 
 module.exports = router;

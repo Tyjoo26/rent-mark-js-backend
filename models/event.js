@@ -52,7 +52,14 @@ class Event {
       return eventOutput
     })
   }
-  show(id) {
+  showCheck(id) {
+    if (this.showWithUser(id) === undefined) {
+      return this.show(id)
+    } else {
+      return this.showWithUser(id)
+    }
+  }
+  showWithUser(id) {
     return database.raw(`SELECT events.id AS event_id,
            events.event_name AS event_name,
            events.event_details AS event_details,
@@ -66,6 +73,9 @@ class Event {
      INNER JOIN event_users on events.id = event_users.event_id
      INNER JOIN users ON users.id = event_users.user_id
      WHERE event_id = ?`, id)
+  }
+  show(id) {
+    return database.raw(`SELECT * FROM events WHERE id = ?`, id)
   }
   validateEventExists(event_id) {
     return database.raw(`SELECT * FROM events WHERE id = ?`, event_id)
