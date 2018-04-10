@@ -26,7 +26,7 @@
       <li>
         <strong>POST /api/v1/users</strong>
         - allows creating a new User with parameters:
-        <br><strong>{ User: {first_name: "First Name", last_name: "Last Name", email: "Email", password: "Password", access: "Tenant" } }</strong>
+        <br><strong>{ "User": {"first_name": "First Name", "last_name": "Last Name", "email": "Email", "password": "Password", "access": "Tenant" } }</strong>
         <br>If User is successfully created, the User object will be returned.
         If the User is not successfully created, a 400 status code will be returned.
         All fields are required to successfully post.
@@ -34,7 +34,7 @@
       <li>
         <strong>PATCH /api/v1/user/:id</strong>
          - allows update of an existing User with parameters:
-        <br><strong>{ User: {first_name: "First Name", last_name: "Last Name", email: "Email", password: "Password", access: "tenant" } }</strong>
+        <br><strong>{ "User": {"first_name": "First Name", "last_name": "Last Name", "email": "Email", "password": "Password", "access": "tenant" } }</strong>
         <br>If User is successfully updated, the User object will be returned.
         If the user is not successfully updated, a 400 status code will be returned.
         All fields are required to successfully post.
@@ -59,7 +59,7 @@
       <li>
         <strong>POST /api/v1/units</strong>
          - creates Unit with parameters:
-         <br><strong>{ unit: {unit_number: "Unit Number", unit_type: "unit_type", rent: "rent", rent_due: "rent_due", rent_due_date: "RentDueDate" } }</strong>
+         <br><strong>{ "unit": {"unit_number": "Unit Number", "unit_type": "unit_type", "rent": "rent", "rent_due": "rent_due", "rent_due_date": "RentDueDate" } }</strong>
          <br>If Unit is successfully created, the Unit object will be returned.
          If the Unit is not successfully created, a 400 status code will be returned.
          All fields are required to successfully post.
@@ -67,14 +67,14 @@
       <li>
         <strong>PATCH /api/v1/units/:unit_id</strong>
          - allows update of an existing Unit with parameters:
-        <br><strong>{ unit: {unit_number: "Unit Number", unit_type: "unit_type", rent: "rent", rent_due: "rent_due", rent_due_date: "RentDueDate" } }</strong>
+        <br><strong>{ "unit": {"unit_number": "Unit Number", "unit_type": "unit_type", "rent": "rent", "rent_due": "rent_due", "rent_due_date": "RentDueDate" } }</strong>
         <br>If Unit is successfully updated, the Unit object will be returned.
         If the Unit is not successfully updated, a 400 status code will be returned.
         All fields are required to successfully patch.
       </li>
       <li>
         <strong>DELETE /api/v1/units/:unit_id</strong>
-         - remove the unit associated with :unit_id:
+         - remove the unit associated with :unit_id
          <br> If the unit cannot be found, a 404 will be returned.
       </li>
     </ul>
@@ -93,7 +93,7 @@
       <li>
         <strong>POST /api/v1/events</strong>
          - adds a new Event with the following parameters:
-         <br><strong>{ event: {event_name: "name", event_details: "details", event_date: "date" } }</strong>
+         <br><strong>{ "event": {"event_name": "name", "event_details": "details", "event_date": "date" } }</strong>
          <br>If event is successfully posted, the event object will be returned.
          If the event is not successfully posted, a 400 status code will be returned.
          All fields are required to successfully post.
@@ -101,7 +101,7 @@
       <li>
         <strong>PATCH /api/v1/events/:event_id</strong>
          - updates an Event with the following parameters:
-         <br><strong>{ event: {event_name: "name", event_details: "details", event_date: "date" } }</strong>
+         <br><strong>{ "event": {"event_name": "name", "event_details": "details", event_date: "date" } }</strong>
          <br>If event is successfully updated, the event object will be returned.
          If the event is not successfully updated, a 400 status code will be returned.
          All fields are required to successfully patch.
