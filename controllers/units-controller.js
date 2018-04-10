@@ -22,7 +22,7 @@ class UnitsController {
       })
   }
   create(req, res) {
-    unit.createUnit(req.body.user)
+    unit.createUnit(req.body.unit)
       .then((data) =>  {res.send(data.rows[0])})
   }
 }
