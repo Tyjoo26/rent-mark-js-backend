@@ -14,4 +14,7 @@ router.post("/:unit_id/users/:user_id", unitsController.updateUnitWithUsers);
 router.post('/', unitsController.create)
 
 router.delete('/:id', unitsController.destroyUnit)
+
+router.delete("/:unit_id/users/:user_id", unitsController.destroyUnitUserAssociation)
+
 module.exports = router;

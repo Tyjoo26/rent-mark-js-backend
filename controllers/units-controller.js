@@ -35,6 +35,16 @@ class UnitsController {
         }
       })
   }
+  destroyUnitUserAssociation(req,res) {
+    unit.destroyUserFromUnit(req.params.unit_id, req.params.user_id)
+      .then((data) => {
+        if (data === false) {
+          res.status(404).send()
+        } else {
+          res.send()
+        }
+      })
+  }
 }
 
 

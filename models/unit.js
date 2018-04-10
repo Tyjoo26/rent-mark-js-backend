@@ -55,6 +55,13 @@ class Unit {
       return database.raw(`DELETE FROM units WHERE id = ?`, unit_id)
     }
   }
+  destroyUserFromUnit(unit_id, user_id) {
+    if (this.validateUnitExists(unit_id).then((result) => result) && (this.validateUserExists(user_id).then((result) => result))) {
+        return database.raw(`DELETE FROM unit_users WHERE id IN (SELECT id FROM unit_users WHERE unit_users.unit_id = ? AND unit_users.user_id = ?)`, [unit_id, user_id])
+      } else {
+        return false
+      }
+  }
 }
 
 
