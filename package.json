@@ -20,5 +20,8 @@
     "node-sass-middleware": "0.11.0",
     "pg": "^7.4.1",
     "stripe": "^5.8.0"
+  },
+  "engines": {
+    "node": "9.8.0"
   }
 }
