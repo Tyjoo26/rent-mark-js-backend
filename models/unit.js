@@ -48,6 +48,13 @@ class Unit {
     return database.raw(`INSERT INTO units(unit_type, unit_number, rent, rent_due, rent_due_date) VALUES (?, ? , ? , ? , ?)
     RETURNING unit_type, unit_number, rent, rent_due, rent_due_date`, [params.unit_type, params.unit_number, params.rent, params.rent_due, params.rent_due_date])
   }
+  destroyUnit(unit_id) {
+    if (this.validateUnitExists(unit_id) === false) {
+      return false
+    } else {
+      return database.raw(`DELETE FROM units WHERE id = ?`, unit_id)
+    }
+  }
 }
 
 

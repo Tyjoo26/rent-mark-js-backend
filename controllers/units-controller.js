@@ -25,6 +25,16 @@ class UnitsController {
     unit.createUnit(req.body.unit)
       .then((data) =>  {res.send(data.rows[0])})
   }
+  destroyUnit(req, res) {
+    unit.destroyUnit(req.params.id)
+      .then((data) => {
+        if (data === false) {
+          res.status(404).send()
+        } else {
+          res.send()
+        }
+      })
+  }
 }
 
 
