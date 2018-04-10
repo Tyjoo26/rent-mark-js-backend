@@ -21,12 +21,12 @@
       </li>
       <li>
         <strong>GET /api/v1/users/:id</strong>
-         - returns the User object with the specific :id you've passed or 404 if the food is not found
+         - returns the User object with the specific :id you've passed or 404 if the User is not found
       </li>
       <li>
         <strong>POST /api/v1/users</strong>
         - allows creating a new User with parameters:
-        <br><strong>{ food: {first_name: "First Name", last_name: "Last Name", email: "Email", password: "Password", unit_id: "Unit Id" } }</strong>
+        <br><strong>{ User: {first_name: "First Name", last_name: "Last Name", email: "Email", password: "Password", access: "Tenant" } }</strong>
         <br>If User is successfully created, the User object will be returned.
         If the User is not successfully created, a 400 status code will be returned.
         All fields are required to successfully post.
@@ -34,7 +34,7 @@
       <li>
         <strong>PATCH /api/v1/user/:id</strong>
          - allows update of an existing User with parameters:
-        <br><strong>{ food: {first_name: "First Name", last_name: "Last Name", email: "Email", password: "Password", unit_id: "Unit Id" } }</strong>
+        <br><strong>{ User: {first_name: "First Name", last_name: "Last Name", email: "Email", password: "Password", access: "tenant" } }</strong>
         <br>If User is successfully updated, the User object will be returned.
         If the user is not successfully updated, a 400 status code will be returned.
         All fields are required to successfully post.
@@ -49,7 +49,7 @@
     <ul>
       <li>
         <strong>GET /api/v1/units</strong>
-         - returns all the units in the database along with their associated tenants(users)
+         - returns all the units in the database
       </li>
       <li>
         <strong>GET /api/v1/units/:unit_id</strong>
@@ -93,7 +93,7 @@
       <li>
         <strong>POST /api/v1/events</strong>
          - adds a new Event with the following parameters:
-         <br><strong>{ event: {name: "name", details: "details", date: "date" } }</strong>
+         <br><strong>{ event: {event_name: "name", event_details: "details", event_date: "date" } }</strong>
          <br>If event is successfully posted, the event object will be returned.
          If the event is not successfully posted, a 400 status code will be returned.
          All fields are required to successfully post.
@@ -101,7 +101,7 @@
       <li>
         <strong>PATCH /api/v1/events/:event_id</strong>
          - updates an Event with the following parameters:
-         <br><strong>{ event: {name: "name", details: "details", date: "date" } }</strong>
+         <br><strong>{ event: {event_name: "name", event_details: "details", event_date: "date" } }</strong>
          <br>If event is successfully updated, the event object will be returned.
          If the event is not successfully updated, a 400 status code will be returned.
          All fields are required to successfully patch.
