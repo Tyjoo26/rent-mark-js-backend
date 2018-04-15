@@ -11,7 +11,7 @@ router.get('/:event_id', eventsController.show);
 
 router.post('/', eventsController.createEvent);
 
-router.post("/:event_id/users/:user_id", eventsController.createEventUser);
+router.post("/:event_id/users", eventsController.createEventUser);
 
 router.delete("/:event_id/users/:user_id", eventsController.destroyUserFromEvent)
 
