@@ -9,7 +9,7 @@ router.get("/", unitsController.index)
 
 router.get("/:id", unitsController.show)
 
-router.post("/:unit_id/users", unitsController.updateUnitWithUsers);
+router.post("/:unit_id/users/:user_id", unitsController.updateUnitWithUsers);
 
 router.post('/', unitsController.create)
 
