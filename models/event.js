@@ -7,6 +7,7 @@ class Event {
   all() {
     return database.raw(`SELECT * FROM events`)
   }
+  //fix api endpoint, is this used anywhere?
   allUsersWithEvents() {
     return database.raw(`
       SELECT events.id AS event_id,
