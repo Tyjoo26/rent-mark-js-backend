@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
   origin: ['https://rent-mark-front-end-react.herokuapp.com',
-           'http://rent-mark-front-end-react.herokuapp.com/units/1',
+           'http://rent-mark-front-end-react.herokuapp.com',
            'http://localhost:3000']
 }));
 
